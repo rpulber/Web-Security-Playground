@@ -9,7 +9,7 @@ The issue really is in the built-in functionality of the website. If we look at 
 ```
 message.innerHTML = `Your name is ${userInput}`
 ```
-Here, the message variable crafts the message displayed on the screen after hitting the button. The usage of innerHTML implies that the content undergoes parsing and interpretation as HTML. To execute JavaScript code, we must navigate the challenge of either escaping the HTML or utilizing an HTML tag to facilitate code execution. Attempts to escape HTML by closing the <h1> tag are futile as the system automatically removes the closing tag.
+Here, the message variable crafts the message displayed on the screen after hitting the button. The usage of innerHTML implies that the content undergoes parsing and interpretation as HTML. To execute JavaScript code, we must navigate the challenge of either escaping the HTML or utilizing an HTML tag to facilitate code execution. Attempts to escape HTML by closing the `<h1>` tag are futile as the system automatically removes the closing tag.
 
 However, we find a clever workaround by harnessing the `<img>` HTML tag, known for enabling JavaScript code execution. The <img> tag boasts an onerror function, triggering JavaScript code if it can't locate the specified image. By providing a nonexistent image source, we ingeniously prompt our desired code execution:
 `<img src=non_existant_image onerror=alert('xss')>`
