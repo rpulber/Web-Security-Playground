@@ -15,4 +15,12 @@ However, we find a clever workaround by harnessing the `<img>` HTML tag, known f
 `<img src=non_existant_image onerror=alert('xss')>`
 
 
-
+# Remediation
+The primary concern with the existing code lies in its use of .innerHTML, a known risky coding practice susceptible to both HTML injection and DOM-based Cross-Site Scripting (DOM XSS) vulnerabilities. To address this issue, a more secure alternative is recommended, such as using either .textContent or innerText. By adopting these alternatives, the input is treated strictly as text without any interpretation as HTML, eliminating the risks associated with potential code injection and ensuring a safer interaction with the Document Object Model (DOM). This mitigates the likelihood of security vulnerabilities stemming from user input manipulation and strengthens the overall robustness of the code.
+Code:
+```
+message.textContent = `Your name is ${userInput}`
+```
+```
+message.innertext = `Your name is ${userInput}`
+```
