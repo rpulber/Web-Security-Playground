@@ -1,5 +1,5 @@
-# Test Vulnerable Websites!
-This is made for those trying to learn web app vulnabliities and actully understanding what the code behind it is that causes the vulnerablity. You can select the vulnerablity you want to learn by navigating to its folder. Each folder will have a starting level of 1 and as it progresses it will get more challenging!
+# Web Security Playground
+Welcome to the Web Security Playground! This platform is designed for those eager to learn about web application vulnerabilities and gain a deep understanding of the underlying code causing these vulnerabilities. Explore and test different levels of vulnerabilities by navigating to their respective folders. Each level starts with a difficulty rating of 1 and progressively becomes more challenging.
 
 ### Instructions
 Once you have found the vulnerablity and level you want to test simply download the html document and open it in the browser of your choice and hack away!
