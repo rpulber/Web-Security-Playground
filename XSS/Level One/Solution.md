@@ -22,5 +22,5 @@ Code:
 message.textContent = `Your name is ${userInput}`
 ```
 ```
-message.innertext = `Your name is ${userInput}`
+message.innerText = `Your name is ${userInput}`
 ```
