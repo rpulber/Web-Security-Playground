@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Hello Name</title>
+</head>
+<body>
+    <h1>Hello. Please input your name!</h1>
+    <input id="userInput"> <br /> <br />
+    <button onclick="nameFunction()"> Submit </button>
+    <h1 id="message"> </h1>
+    <style>
+        body {background-color: darkcyan; text-align: center; color: floralwhite}
+    </style>
+    
+    <script>
+        function nameFunction() {
+            let userInput = document.getElementById("userInput").value
+            let message = document.getElementById("message")
+
+            message.innerHTML = `Your name is ${userInput}` 
+        }
+    </script>
+
+</body>
+</html>
