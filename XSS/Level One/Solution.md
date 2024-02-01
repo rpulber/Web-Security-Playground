@@ -9,10 +9,9 @@ The issue really is in the built-in functionality of the website. If we look at 
 ```
 message.innerHTML = `Your name is ${userInput}`
 ```
-The message variable is responsible for the message we see popping on the screen when we press the button which means thats what we're injecting into. As we can see it is followed by a innerHTML property which means it is parsing and interpreting the HTML. This means that in order for us to get any javascript code execution we would either have to escape the HTML or use a HTML tag to get javascript code execution.
-Now we can't escape the HTML because every time we try to end the `<h1>` it just gets rid of it. 
+Here, the message variable crafts the message displayed on the screen after hitting the button. The usage of innerHTML implies that the content undergoes parsing and interpretation as HTML. To execute JavaScript code, we must navigate the challenge of either escaping the HTML or utilizing an HTML tag to facilitate code execution. Attempts to escape HTML by closing the <h1> tag are futile as the system automatically removes the closing tag.
 
-We can however use the `<img>` HTML tag which could allow us to run javascript. The img tag has a onerror function in which it will run javascript if it can't find the img its looking for. So we are going to give it a nonexistent image which when it won't be able to find it will run our code.
+However, we find a clever workaround by harnessing the <img> HTML tag, known for enabling JavaScript code execution. The <img> tag boasts an onerror function, triggering JavaScript code if it can't locate the specified image. By providing a nonexistent image source, we ingeniously prompt our desired code execution:
 `<img src=non_existant_image onerror=alert('xss')>`
 
 
