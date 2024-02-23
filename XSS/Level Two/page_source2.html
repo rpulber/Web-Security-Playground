@@ -21,7 +21,7 @@
         function nameFunction() {
             let userInput = document.getElementById("userInput").value
             let message = document.getElementById("message")
-	    userInput = userInput.replace(/</g,"").replace(/>/g,"").replace(/img/g,"")
+	    userInput = userInput.replace(/</,"").replace(/>/,"").replace(/img/,"")
 
             message.innerHTML = `Your name is ${userInput}` 
         }
