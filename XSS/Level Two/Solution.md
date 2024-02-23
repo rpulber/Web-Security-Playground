@@ -1,1 +1,1 @@
-
+In Level One, we were able to use a payload containing the <img> tag, and while the recommended fix was to change innerHtml to innerText, the developers decided to take the route of blacklisting certain charachters to ensure that the payload would not work. Using the .replace() function they replaced every "<", ">", and "img" to a blank space basically removing it from the user input. This can be seen on line:
