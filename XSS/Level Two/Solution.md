@@ -1,9 +1,12 @@
 # Solution
 In Level One, we were able to use a payload containing the <img> tag. While the recommended fix was to change innerHtml to innerText, the developers decided to take the route of blacklisting certain characters to ensure that the payload would not work. Using the .replace() function they replaced every "<", ">", and "img" to a blank space removing it from the user input. This can be seen on line 24:
-![image](https://github.com/rpulber/Web-Security-Playground/assets/95892479/fd03fe94-151e-419e-8883-b7de7a3abb7d)
-
+```
+userInput = userInput.replace(/</,"").replace(/>/,"").replace(/img/,"")
+```
 This meant that if we tried to do our previous payload of:
-```<img src=non_existant_image onerror=alert('xss')>```
+```
+<img src=non_existant_image onerror=alert('xss')>
+```
 it would not work but instead would show us:
 ![image](https://github.com/rpulber/Web-Security-Playground/assets/95892479/eaec948d-e1f8-4ea0-92fb-29597c60bb9c)
 
@@ -12,5 +15,7 @@ From this, we can see that it just completely filtered out the <img> tag making 
 
 # Remediation 
 The problem with the replace function is that by default it only replaces the first instance of whatever it's filtering. There is a simple code adjustment that would change this so that it would filter every single instance of the character. This would be using the g capability and putting it into the function. So if you instead change the code of line 24 to:
-![image](https://github.com/rpulber/Web-Security-Playground/assets/95892479/87f5cf43-baa9-4048-b737-03f2c9bb0005)
+```
+userInput = userInput.replace(/</g,"").replace(/>/g,"").replace(/img/g,"")
+```
 Now if you can tell we added a g to every function and it will now filter every instance of whatever it is called to replace. Now this does not completely patch all issues as we will see in future levels!
