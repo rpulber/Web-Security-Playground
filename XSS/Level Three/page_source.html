@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Name</title>
+</head>
+<body onload="parameterLink()">
+    <h1>Redirecting...</h1>
+   
+    <a id="createdLink" href=""> If not redirected after 10 seconds press here! </a>
+   
+    <style>
+        body {
+            background-color: darkcyan;  
+            text-align: center; 
+            color: floralwhite;
+        }
+    </style>
+    
+    <script>
+        /*parameterLink is created to grab the Link parameter and add it to the end of the URL using the href so the user
+        can go to the correct link assigned for them
+        */
 
+        function parameterLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const parameterReal = urlParams.get('link');
+            let createdLink = document.getElementById("createdLink");
+            createdLink.href = parameterReal || "#"; // Set default link if parameter is not provided
+            
+            // This simulates a user clicking on the link making it a automatic redirect instead of needing the user to click it.
+        }
+        function simulateClick(control) {
+            if (document.all) {
+            control.click();
+            } 
+            else 
+            {
+            var evObj = document.createEvent('MouseEvents');
+            evObj.initMouseEvent('click', true, true, window, 1, 12, 345, 7, 220, false, false, true, false, 0, null );
+            control.dispatchEvent(evObj);
+  }
+}
+   
+  
+         //Inject the parameter into href when website runs
+         window.onload = parameterLink();
+          //Open link and automatically redirect
+         window.onload = simulateClick(document.getElementById('createdLink'));
+    </script>
+
+</body>
+
+</html>
