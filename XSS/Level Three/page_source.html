@@ -29,9 +29,10 @@
             const parameterReal = urlParams.get('link');
             let createdLink = document.getElementById("createdLink");
             createdLink.href = parameterReal || "#"; // Set default link if parameter is not provided
-            
-            // This simulates a user clicking on the link making it a automatic redirect instead of needing the user to click it.
+            simulateClick(createdLink);
+        
         }
+         // This simulates a user clicking on the link making it a automatic redirect instead of needing the user to click it.
         function simulateClick(control) {
             if (document.all) {
             control.click();
@@ -48,7 +49,7 @@
          //Inject the parameter into href when website runs
          window.onload = parameterLink();
           //Open link and automatically redirect
-         window.onload = simulateClick(document.getElementById('createdLink'));
+         //window.onload = simulateClick(document.getElementById('createdLink'));
     </script>
 
 </body>
