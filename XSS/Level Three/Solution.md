@@ -12,3 +12,22 @@ At first, we want to see where our input is reflected in the code so we try `INJ
 ![image](https://github.com/rpulber/Web-Security-Playground/assets/95892479/ca65b254-b9e7-42e1-b560-c70f5c4a2aa8)
 
 This presents us with an issue, since our input is purely seen as text we can't escape the href tag and inject code. One way we can get the browser to see our input as code is by using the `javascript:` function. Anytime the browser sees this input it knows that it is code and will execute whatever follows. So if we do `javascript:alert('xss')` this would lead the browser to see the input as code and inject the payload into the href but since it automatically clicks on the href it would automatically execute our code giving us XSS!
+
+![image](https://github.com/rpulber/Web-Security-Playground/assets/95892479/286a6eb3-6600-4994-9ca1-dcd178150384)
+
+
+# Remediation
+
+The vulnerability is found in the parameterLink() function. The reason this is vulnerable is because there is no encoding to prevent people from injecting special characters. So if we change the function to:
+```
+ function parameterLink() {
+            function parameterLink() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const parameterReal = urlParams.get('link');
+            const sanitizedLink = parameterReal ? encodeURIComponent(parameterReal) : "#"; // Sanitize and encode the link parameter
+            let createdLink = document.getElementById("createdLink");
+            createdLink.href = sanitizedLink;
+        
+        }
+```
+Now we can see that our user input is getting encoded with the encodeURICompenent() function. This function encodes special characters in the parameter value, making it safe to be used as part of a URL without triggering any unintended behavior.
